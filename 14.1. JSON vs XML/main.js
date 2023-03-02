@@ -1,5 +1,4 @@
 // ! ЗАДАЧА 1
-
 const parser = new DOMParser();
 
 const xmlString = `
@@ -24,38 +23,35 @@ const xmlString = `
 `
 const xmlDOM = parser.parseFromString(xmlString, "text/xml");
 
+const listNode = xmlDOM.querySelector("list")
 
-const studentNodes = xmlDOM.querySelector("student")
-
-for (let studentNode in studentNodes) {
-
-    const nameNode = studentNodes.querySelector("name");
-    const firstNameNode = studentNodes.querySelector("first");
-    const secondNameNode = studentNodes.querySelector("second");
-    const ageNode = studentNodes.querySelector("age");
-    const profNode = studentNodes.querySelector("prof");
+const studentNodes = listNode.querySelectorAll('student')
+var nameArr = []
+studentNodes.forEach((studentNode)=>{
+    const nameNode = studentNode.querySelector("name");
+    const firstNameNode = studentNode.querySelector("first");
+    const secondNameNode = studentNode.querySelector("second");
+    const ageNode = studentNode.querySelector("age");
+    const profNode = studentNode.querySelector("prof");
 
     const langAttr = nameNode.getAttribute('lang');
 
     const studName = `${firstNameNode.textContent} ${secondNameNode.textContent}`
+    const result_1 = {
+      name: studName,
+      age: ageNode.textContent,
+      prof: profNode.textContent,
+      lang: langAttr,
+    };
+    nameArr.push(result_1)
+  
+})
 
-    console.log(studName)
+
+let result01 = {
+  list: nameArr
 }
-// console.log('firstNameNode', firstNameNode);
-// console.log('secondNameNode', secondNameNode);
-// console.log('ageNode', ageNode);
-// console.log('profNode', profNode);
-// console.log('langAttr', langAttr);
-
-const result_1 = {
-    name: studName,
-    age: ageNode.textContent,
-    prof: profNode.textContent,
-    lang: langAttr,
-};
-console.log(result_1);
-
-
+console.log(result01)
 
 
 // ! ЗАДАЧА 2 
@@ -76,19 +72,8 @@ const jsonString = `
         ]
     }
 `;
-// console.log('jsonString', jsonString);
 
 const data = JSON.parse(jsonString);
 
-// console.log('data', data);
-
-const list = data.list;
-
-// console.log('student', student);
-
-const result_2 = {
-    name: list.name,
-    age: list.age,
-    prof: list.prof,
-};
+const result_2 = data
 console.log('result_2', result_2)
