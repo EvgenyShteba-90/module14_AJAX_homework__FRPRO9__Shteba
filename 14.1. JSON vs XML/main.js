@@ -27,7 +27,7 @@ const listNode = xmlDOM.querySelector("list")
 
 const studentNodes = listNode.querySelectorAll('student')
 var nameArr = []
-studentNodes.forEach((studentNode)=>{
+studentNodes.forEach((studentNode) => {
     const nameNode = studentNode.querySelector("name");
     const firstNameNode = studentNode.querySelector("first");
     const secondNameNode = studentNode.querySelector("second");
@@ -38,18 +38,18 @@ studentNodes.forEach((studentNode)=>{
 
     const studName = `${firstNameNode.textContent} ${secondNameNode.textContent}`
     const result_1 = {
-      name: studName,
-      age: ageNode.textContent,
-      prof: profNode.textContent,
-      lang: langAttr,
+        name: studName,
+        age: ageNode.textContent,
+        prof: profNode.textContent,
+        lang: langAttr,
     };
     nameArr.push(result_1)
-  
+
 })
 
 
 let result01 = {
-  list: nameArr
+    list: nameArr
 }
 console.log(result01)
 
